@@ -1,0 +1,128 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Services">
+  <section class="page-header">
+    <h1>Our Services</h1>
+    <p>Quality earthworks and landscaping solutions for Perth homeowners and builders</p>
+  </section>
+
+  <section class="services">
+
+    <div class="service-block" id="retaining">
+      <div class="service-text">
+        <h2>🧱 Limestone Retaining Walls</h2>
+        <p>Natural limestone is the material of choice for Perth retaining walls — it's hardwearing, locally sourced, and looks better with age. Whether you need a small garden wall to level a backyard or a major structural retaining wall for a sloping block, we build them to last.</p>
+        <p>We handle the complete job: excavation, drainage, wall construction and backfill. Every wall is built to engineering standards with proper geotech fabric and drainage behind the stone.</p>
+        <ul class="service-list">
+          <li>Garden retaining walls — any height</li>
+          <li>Structural retaining walls for sloping blocks</li>
+          <li>Curved and straight wall designs</li>
+          <li>Steps and staircases in limestone</li>
+          <li>Drainage behind all walls included</li>
+          <li>Council compliance where required</li>
+        </ul>
+        <a href="/contact" class="btn">Request a Quote</a>
+      </div>
+      <div class="service-image">🧱</div>
+    </div>
+
+    <div class="service-block alt" id="earthworks">
+      <div class="service-text">
+        <h2>🚜 Bulk Earthworks</h2>
+        <p>Site preparation is the most important step in any construction or landscaping project. Get it wrong and you'll be fixing problems for years. We have the equipment and experience to cut, fill, grade and level your site correctly from the start.</p>
+        <p>From single residential blocks to multi-lot subdivisions, we deliver accurate cuts and fills with proper compaction — ready for the next trade.</p>
+        <ul class="service-list">
+          <li>Site cuts and bulk filling</li>
+          <li>Block levelling and grading</li>
+          <li>Fill importation and spreading</li>
+          <li>Subgrade preparation for driveways and pads</li>
+          <li>Dam construction and repair</li>
+          <li>Road and access track building</li>
+        </ul>
+        <a href="/contact" class="btn">Request a Quote</a>
+      </div>
+      <div class="service-image">🚜</div>
+    </div>
+
+    <div class="service-block" id="bobcat">
+      <div class="service-text">
+        <h2>🦴 Bobcat & Site Clearing</h2>
+        <p>Fast, efficient bobcat work for all types of site clearing and material handling. We handle everything from initial block clearing to final spread and cleanup — no job too small for our fleet.</p>
+        <p>Whether you're building a new home, laying a driveway, or doing a landscaping makeover, we'll get your site clear and ready.</p>
+        <ul class="service-list">
+          <li>Site clearing and vegetation removal</li>
+          <li>Rubble and green waste removal</li>
+          <li>Material carting and delivery</li>
+          <li>Soil, sand, limestone and gravel spreading</li>
+          <li>Driveway and path preparation</li>
+          <li>Post-hole digging and posthole rammer</li>
+        </ul>
+        <a href="/contact" class="btn">Request a Quote</a>
+      </div>
+      <div class="service-image">🦴</div>
+    </div>
+
+    <div class="service-block alt" id="drainage">
+      <div class="service-text">
+        <h2>💧 Drainage & Site Prep</h2>
+        <p>Poor drainage destroys foundations, driveways and landscapes. We design and install practical drainage solutions that actually work in Perth's sandy soil conditions — from simple spoon drains to complex subsoil systems.</p>
+        <p>Correct site preparation also means understanding your soil type, fall angles and where water needs to go. We factor all of that in.</p>
+        <ul class="service-list">
+          <li>Spoon drains and french drains</li>
+          <li>Subsoil drainage systems</li>
+          <li>Soakwell installation</li>
+          <li>Stormwater connection and outlets</li>
+          <li>Benching and fall correction</li>
+          <li>Drainage plans for council submissions</li>
+        </ul>
+        <a href="/contact" class="btn">Request a Quote</a>
+      </div>
+      <div class="service-image">💧</div>
+    </div>
+
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Got a Job in Mind?</h2>
+      <p>Tell us what you need — we'll come out, assess the site and give you an honest quote.</p>
+      <a href="/contact" class="btn">Get a Free Quote</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+.page-header { background: var(--dark); color: white; padding: 5rem 2rem 3rem; text-align: center; }
+.page-header h1 { font-size: 3rem; color: white; margin-bottom: 0.5rem; }
+.page-header p { color: rgba(255,255,255,0.7); }
+
+.services { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
+
+.service-block {
+  display: grid; grid-template-columns: 1fr 180px; gap: 3rem; align-items: center;
+  padding: 3.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.service-block.alt { direction: rtl; }
+.service-block.alt .service-text { direction: ltr; }
+
+.service-text h2 { font-size: 1.8rem; color: var(--stone); margin-bottom: 1rem; }
+.service-text p { margin-bottom: 1rem; color: var(--text-light); font-size: 0.97rem; line-height: 1.7; }
+.service-list { list-style: none; margin: 1.2rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+.service-list li { font-size: 0.9rem; color: var(--text); padding-left: 1.2rem; position: relative; }
+.service-list li::before { content: '✓'; position: absolute; left: 0; color: var(--rust); font-weight: bold; }
+
+.service-image { font-size: 5rem; text-align: center; opacity: 0.3; }
+
+.cta { background: var(--cream); text-align: center; padding: 4rem 2rem; }
+.container { max-width: 700px; margin: 0 auto; }
+.cta h2 { font-size: 2.2rem; color: var(--stone); margin-bottom: 1rem; }
+.cta p { margin-bottom: 2rem; color: var(--text-light); }
+
+@media (max-width: 768px) {
+  .service-block, .service-block.alt { grid-template-columns: 1fr; direction: ltr; }
+  .service-image { display: none; }
+  .service-list { grid-template-columns: 1fr; }
+}
+</style>

@@ -1,0 +1,116 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact" description="Contact Mitchell Siteworks for a free quote on limestone retaining walls, earthworks, bobcat and site preparation in Perth.">
+  <section class="page-header">
+    <h1>Get a Free Quote</h1>
+    <p>Tell us about your job — we'll get back to you within 24 hours</p>
+  </section>
+
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <div class="form-wrapper">
+          <h2>Send Us a Message</h2>
+          <form name="contact" method="POST" action="https://formspree.io/f/yourformid" class="contact-form">
+            <div class="form-group">
+              <label for="name">Your Name *</label>
+              <input type="text" id="name" name="name" required placeholder="Full name" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" required placeholder="04XX XXX XXX" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" />
+            </div>
+            <div class="form-group">
+              <label for="service">Service Required</label>
+              <select id="service" name="service">
+                <option value="">Select a service...</option>
+                <option value="retaining">Limestone Retaining Wall</option>
+                <option value="earthworks">Bulk Earthworks</option>
+                <option value="bobcat">Bobcat & Site Clearing</option>
+                <option value="drainage">Drainage & Site Prep</option>
+                <option value="other">Other / Not Sure</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="address">Site Address / Location</label>
+              <input type="text" id="address" name="address" placeholder="Suburb, Perth WA" />
+            </div>
+            <div class="form-group">
+              <label for="message">Tell Us About the Job *</label>
+              <textarea id="message" name="message" required rows="5" placeholder="Describe what you need — dimensions if known, access issues, photos help too..."></textarea>
+            </div>
+            <button type="submit" class="btn">Send Enquiry ✉</button>
+          </form>
+        </div>
+
+        <div class="contact-info">
+          <div class="info-card">
+            <h3>Call or Message</h3>
+            <p>📞 <strong>042X XXX XXX</strong></p>
+            <p>Available Mon–Sat, 7am – 6pm</p>
+          </div>
+          <div class="info-card">
+            <h3>Email</h3>
+            <p>✉️ <strong>info@mitchellsiteworks.com.au</strong></p>
+            <p>We respond within 24 hours</p>
+          </div>
+          <div class="info-card">
+            <h3>Service Area</h3>
+            <p>Perth metro and surrounds:<br/>Hills to the coast, north to Yanchep, south to Mandurah.</p>
+          </div>
+          <div class="info-card">
+            <h3>What to Include in Your Enquiry</h3>
+            <ul>
+              <li>• Suburb / exact location</li>
+              <li>• Approximate dimensions if known</li>
+              <li>• Photos of the site are a huge help</li>
+              <li>• Whether you have a deadline</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+.page-header { background: var(--dark); color: white; padding: 5rem 2rem 3rem; text-align: center; }
+.page-header h1 { font-size: 3rem; color: white; margin-bottom: 0.5rem; }
+.page-header p { color: rgba(255,255,255,0.7); }
+
+.contact-section { padding: 4rem 0; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+.contact-grid { display: grid; grid-template-columns: 1fr 340px; gap: 4rem; }
+
+.form-wrapper h2 { font-size: 1.8rem; color: var(--stone); margin-bottom: 1.5rem; }
+.form-group { margin-bottom: 1.2rem; }
+.form-group label { display: block; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--stone); margin-bottom: 0.35rem; }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; padding: 0.75rem 1rem; border: 1px solid rgba(0,0,0,0.15); border-radius: 4px;
+  font-family: 'Lato', sans-serif; font-size: 0.95rem; background: white;
+  transition: border-color 0.2s;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none; border-color: var(--rust);
+}
+.form-group textarea { resize: vertical; }
+
+.contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
+.info-card { background: var(--cream); padding: 1.4rem; border-radius: 6px; border-left: 3px solid var(--rust); }
+.info-card h3 { font-size: 1rem; color: var(--stone); margin-bottom: 0.7rem; }
+.info-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.4rem; }
+.info-card ul { list-style: none; }
+.info-card ul li { font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.2rem; }
+
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+</style>
