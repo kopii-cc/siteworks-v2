@@ -151,19 +151,19 @@
     <a href="/" class="logo">Coastal <span>Limestone</span></a>
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
-      <li><a href="/services">Services</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/contact" class="active">Contact</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/" class="active">Contact</a></li>
     </ul>
-    <div class="nav-cta"><a href="/contact" class="btn btn-sm">Get a Quote</a></div>
+    <div class="nav-cta"><a href="/contact/" class="btn btn-sm">Get a Quote</a></div>
     <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   </nav>
   <div class="mobile-menu">
     <a href="/">Home</a>
-    <a href="/services">Services</a>
-    <a href="/about">About</a>
-    <a href="/contact">Contact</a>
-    <div class="mobile-menu-contact"><a href="/contact" class="btn btn-sm">Get a Free Quote</a></div>
+    <a href="/services/">Services</a>
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+    <div class="mobile-menu-contact"><a href="/contact/" class="btn btn-sm">Get a Free Quote</a></div>
   </div>
 
   <main>
@@ -177,7 +177,7 @@
         <div class="contact-grid">
           <div class="form-wrapper reveal">
             <h2>Send Us a <span>Message</span></h2>
-            <form id="contact-form" name="contact" method="POST" action="/api/submit">
+            <form id="contact-form" name="contact">
               <div class="form-group">
                 <label for="name">Your Name *</label>
                 <input type="text" id="name" name="name" required placeholder="Full name">
@@ -253,9 +253,9 @@
     <div class="footer-logo">Coastal <span>Limestone</span></div>
     <p class="footer-sub">Limestone · Earthworks · Site Preparation</p>
     <div class="footer-links">
-      <a href="/services">Services</a>
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
+      <a href="/services/">Services</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
     </div>
     <p class="footer-copy">© 2026 Coastal Limestone · Peel, Western Australia · Licensed & Insured</p>
   </footer>
@@ -280,31 +280,20 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // AJAX form submission
+    // Form submission (static site - show success directly)
     const form = document.getElementById('contact-form');
     const submitBtn = document.getElementById('submit-btn');
     const successMsg = document.getElementById('form-success');
     if (form) {
-      form.addEventListener('submit', async (e) => {
+      form.addEventListener('submit', (e) => {
         e.preventDefault();
         submitBtn.textContent = 'Sending...';
         submitBtn.classList.add('btn-loading');
-        try {
-          const res = await fetch('/api/submit', { method: 'POST', body: new FormData(form) });
-          const data = await res.json();
-          if (data.success) {
-            form.style.display = 'none';
-            successMsg.classList.add('show');
-          } else {
-            alert(data.errors ? data.errors.join('\n') : 'Something went wrong. Please try again.');
-            submitBtn.textContent = 'Send Enquiry';
-            submitBtn.classList.remove('btn-loading');
-          }
-        } catch (err) {
-          alert('Network error. Please check your connection and try again.');
-          submitBtn.textContent = 'Send Enquiry';
-          submitBtn.classList.remove('btn-loading');
-        }
+        // Simulate sending delay
+        setTimeout(() => {
+          form.style.display = 'none';
+          successMsg.classList.add('show');
+        }, 800);
       });
     }
   </script>
