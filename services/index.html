@@ -8,271 +8,124 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* ========== VARIABLES ========== */
     :root {
-      --bg: #1a1714;
-      --bg-mid: #242019;
-      --bg-warm: #2e2923;
-      --rust: #c9651e;
-      --rust-dim: #a85418;
-      --rust-glow: #e8742a;
-      --cream: #e8ddd0;
-      --cream-dim: #bfb5a6;
-      --umber: #8a7b6e;
-      --light: #f5f0e8;
-      --white: #faf8f4;
-      --black: #0f0d0b;
-      --font-display: 'Bebas Neue', Impact, sans-serif;
-      --font-body: 'DM Sans', system-ui, sans-serif;
-      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
-      --ease-heavy: cubic-bezier(0.16, 1, 0.3, 1);
+      --white: #ffffff;
+      --sand: #faf7f2;
+      --sand-dark: #f0ebe3;
+      --navy: #0f172a;
+      --navy-light: #1e293b;
+      --teal: #0d9488;
+      --teal-dark: #0f766e;
+      --teal-light: #99f6e4;
+      --teal-bg: #f0fdfa;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --muted: #64748b;
+      --font-display: 'Syne', system-ui, sans-serif;
+      --font-body: 'Work Sans', system-ui, sans-serif;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+      --radius: 8px;
+      --radius-lg: 12px;
     }
-
-    /* ========== RESET ========== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-    body {
-      font-family: var(--font-body);
-      background: var(--bg);
-      color: var(--cream);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-    img, svg { display: block; max-width: 100%; }
-    a { color: var(--rust); text-decoration: none; transition: color 0.2s; }
-    a:hover { color: var(--rust-glow); }
-    h1,h2,h3,h4 { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.05; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--white); color: var(--navy); line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { color: var(--teal); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--teal-dark); }
+    h1,h2,h3,h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.1; }
 
-    /* ========== NOISE ========== */
-    .noise-overlay { position: relative; }
-    .noise-overlay::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      opacity: 0.035;
-      pointer-events: none;
-      z-index: 1;
-      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 200px 200px;
-    }
-
-    /* ========== NAV ========== */
-    .site-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      padding: 1rem 1.25rem;
-      background: rgba(15, 13, 11, 0.85);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(232, 221, 208, 0.06);
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .logo { font-family: var(--font-display); font-size: 1.5rem; color: var(--cream); letter-spacing: 0.08em; line-height: 1; }
-    .logo span { color: var(--rust); }
+    /* NAV */
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 1.5rem; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--navy); letter-spacing: -0.02em; }
+    .logo span { color: var(--teal); }
     .nav-links { display: none; list-style: none; gap: 2rem; align-items: center; }
-    .nav-links a { color: var(--cream-dim); font-size: 0.82rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; position: relative; padding: 0.25rem 0; }
-    .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--rust); transition: width 0.3s var(--ease-out); }
-    .nav-links a:hover { color: var(--cream); }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-links a.active { color: var(--cream); }
-    .nav-links a.active::after { width: 100%; }
+    .nav-links a { color: var(--muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-links a.active { color: var(--navy); font-weight: 600; }
     .nav-cta { display: none; }
     .menu-toggle { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 1010; }
-    .menu-toggle span { display: block; width: 26px; height: 2px; background: var(--cream); transition: all 0.35s var(--ease-out); transform-origin: center; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--navy); transition: all 0.3s var(--ease); transform-origin: center; }
     .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .menu-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-menu { position: fixed; inset: 0; z-index: 999; background: var(--black); display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.4s var(--ease-out); }
+    .mobile-menu { position: fixed; inset: 0; z-index: 999; background: var(--white); display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s var(--ease); }
     .mobile-menu.open { opacity: 1; pointer-events: auto; }
-    .mobile-menu a { display: block; font-family: var(--font-display); font-size: clamp(2.5rem, 10vw, 4.5rem); color: var(--cream); text-transform: uppercase; letter-spacing: 0.06em; padding: 0.3rem 0; opacity: 0; transform: translateY(30px); transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out), color 0.2s; }
+    .mobile-menu a { display: block; font-family: var(--font-display); font-size: clamp(2rem, 8vw, 3.5rem); font-weight: 700; color: var(--navy); padding: 0.4rem 0; opacity: 0; transform: translateY(20px); transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), color 0.2s; }
     .mobile-menu.open a { opacity: 1; transform: translateY(0); }
-    .mobile-menu.open a:nth-child(1) { transition-delay: 0.1s; }
-    .mobile-menu.open a:nth-child(2) { transition-delay: 0.18s; }
-    .mobile-menu.open a:nth-child(3) { transition-delay: 0.26s; }
-    .mobile-menu.open a:nth-child(4) { transition-delay: 0.34s; }
-    .mobile-menu a:hover { color: var(--rust); }
-    .mobile-menu-contact { margin-top: 2rem; opacity: 0; transform: translateY(20px); transition: opacity 0.4s var(--ease-out) 0.45s, transform 0.4s var(--ease-out) 0.45s; }
+    .mobile-menu.open a:nth-child(1) { transition-delay: 0.08s; }
+    .mobile-menu.open a:nth-child(2) { transition-delay: 0.14s; }
+    .mobile-menu.open a:nth-child(3) { transition-delay: 0.2s; }
+    .mobile-menu.open a:nth-child(4) { transition-delay: 0.26s; }
+    .mobile-menu a:hover { color: var(--teal); }
+    .mobile-menu-contact { margin-top: 2rem; opacity: 0; transform: translateY(15px); transition: opacity 0.3s var(--ease) 0.35s, transform 0.3s var(--ease) 0.35s; }
     .mobile-menu.open .mobile-menu-contact { opacity: 1; transform: translateY(0); }
 
-    /* ========== BUTTONS ========== */
-    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2rem; background: var(--rust); color: var(--white); font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.08em; text-transform: uppercase; border: 2px solid var(--rust); border-radius: 0; cursor: pointer; transition: all 0.3s var(--ease-out); position: relative; overflow: hidden; }
-    .btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); transition: left 0.5s var(--ease-out); }
-    .btn:hover { background: var(--rust-dim); border-color: var(--rust-dim); color: var(--white); transform: translateY(-2px); }
-    .btn:hover::before { left: 100%; }
-    .btn-sm { padding: 0.6rem 1.4rem; font-size: 0.95rem; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.75rem; background: var(--teal); color: var(--white); font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; border: none; border-radius: var(--radius); cursor: pointer; transition: all 0.3s var(--ease); }
+    .btn:hover { background: var(--teal-dark); color: var(--white); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .btn-sm { padding: 0.6rem 1.25rem; font-size: 0.85rem; }
 
-    .container { max-width: 1100px; margin: 0 auto; width: 100%; }
-    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s var(--ease-heavy), transform 0.8s var(--ease-heavy); }
+    .container { max-width: 1100px; margin: 0 auto; width: 100%; padding: 0 1.5rem; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
 
-    /* ========== PAGE HEADER ========== */
-    .page-header {
-      padding: 7rem 1.25rem 3rem;
-      background: linear-gradient(160deg, var(--black) 0%, #2a1f16 50%, var(--bg) 100%);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .page-header-bg {
-      position: absolute;
-      inset: 0;
-      background: url('https://images.unsplash.com/photo-1748848436533-f7583dce22b6?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-      opacity: 0.12;
-      filter: saturate(0.5);
-      z-index: 0;
-    }
-    .page-header::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 80px;
-      background: linear-gradient(to top, var(--bg), transparent);
-      z-index: 1;
-    }
-    .page-header h1 {
-      font-size: clamp(3rem, 10vw, 5.5rem);
-      color: var(--cream);
-      margin-bottom: 0.5rem;
-      position: relative;
-      z-index: 2;
-    }
-    .page-header p {
-      font-size: clamp(0.9rem, 2vw, 1.1rem);
-      color: var(--cream-dim);
-      position: relative;
-      z-index: 2;
-    }
+    /* PAGE HEADER */
+    .page-header { padding: 8rem 1.5rem 3.5rem; background: linear-gradient(170deg, var(--teal-bg) 0%, var(--sand) 100%); text-align: center; position: relative; }
+    .page-header h1 { font-size: clamp(2.5rem, 8vw, 4rem); color: var(--navy); margin-bottom: 0.5rem; letter-spacing: -0.03em; }
+    .page-header p { font-size: 1.05rem; color: var(--muted); }
 
-    /* ========== SERVICE BLOCKS ========== */
-    .services-list {
-      padding: 3rem 1.25rem;
-    }
-    .service-block {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 3rem 0;
-      border-bottom: 1px solid rgba(232, 221, 208, 0.06);
-    }
+    /* SERVICE BLOCKS */
+    .services-list { padding: 4rem 0; }
+    .service-block { max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem; border-bottom: 1px solid var(--border); }
     .service-block:last-child { border-bottom: none; }
+    .service-block-inner { display: grid; gap: 2rem; }
+    .service-block-img { width: 100%; height: 220px; object-fit: cover; border-radius: var(--radius-lg); }
+    .service-block h2 { font-size: clamp(1.5rem, 4vw, 2rem); color: var(--navy); margin-bottom: 0.75rem; }
+    .service-block p { font-size: 0.95rem; color: var(--muted); line-height: 1.75; max-width: 650px; }
+    .service-block p + p { margin-top: 0.75rem; }
+    .service-checklist { list-style: none; display: grid; gap: 0.5rem; margin-top: 1.25rem; }
+    .service-checklist li { font-size: 0.9rem; color: var(--navy); padding-left: 1.5rem; position: relative; }
+    .service-checklist li::before { content: '✓'; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+    .service-block .btn { margin-top: 1.25rem; }
 
-    .service-block-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.25rem;
-    }
-    .service-block-icon {
-      font-size: 2.5rem;
-      line-height: 1;
-    }
-    .service-block h2 {
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      color: var(--cream);
-    }
+    /* CTA */
+    .cta-section { padding: 5rem 1.5rem; background: var(--teal); text-align: center; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: rgba(255,255,255,0.08); border-radius: 50%; }
+    .cta-section h2 { font-size: clamp(1.8rem, 5vw, 3rem); color: var(--white); margin-bottom: 1rem; position: relative; z-index: 1; }
+    .cta-section p { font-size: 1.05rem; color: rgba(255,255,255,0.85); margin-bottom: 2rem; position: relative; z-index: 1; }
+    .cta-section .btn { background: var(--white); color: var(--teal); position: relative; z-index: 1; }
+    .cta-section .btn:hover { background: var(--navy); color: var(--white); }
 
-    .service-block-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border: 1px solid rgba(232, 221, 208, 0.06);
-      margin-bottom: 1.5rem;
-      filter: saturate(0.7) brightness(0.9);
-      transition: filter 0.4s var(--ease-out);
-    }
-    .service-block:hover .service-block-img {
-      filter: saturate(0.9) brightness(1);
-    }
-
-    .service-block-body {
-      display: grid;
-      gap: 1.5rem;
-    }
-    .service-block p {
-      font-size: 0.95rem;
-      color: var(--cream-dim);
-      line-height: 1.75;
-      max-width: 700px;
-    }
-
-    .service-checklist {
-      list-style: none;
-      display: grid;
-      gap: 0.5rem;
-    }
-    .service-checklist li {
-      font-size: 0.9rem;
-      color: var(--cream);
-      padding-left: 1.5rem;
-      position: relative;
-    }
-    .service-checklist li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--rust);
-      font-weight: 700;
-      font-size: 0.85rem;
-    }
-
-    .service-block .btn {
-      margin-top: 0.5rem;
-    }
-
-    /* Alternating blocks with offset accent */
-    .service-block.alt {
-      background: var(--bg-mid);
-      margin-left: -1.25rem;
-      margin-right: -1.25rem;
-      padding: 3rem 1.25rem;
-      border-bottom-color: rgba(232, 221, 208, 0.04);
-    }
-
-    /* ========== CTA ========== */
-    .cta-section {
-      background: linear-gradient(160deg, #2a1f16, var(--bg) 60%);
-      padding: 5rem 1.25rem;
-      text-align: center;
-      position: relative;
-    }
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 30% 50%, rgba(201, 101, 30, 0.08) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .cta-section h2 { font-size: clamp(2rem, 6vw, 3.5rem); color: var(--cream); margin-bottom: 1rem; position: relative; z-index: 1; }
-    .cta-section p { font-size: 1.05rem; color: var(--cream-dim); margin-bottom: 2rem; position: relative; z-index: 1; }
-    .cta-section .btn { position: relative; z-index: 1; }
-
-    /* ========== FOOTER ========== */
-    .site-footer { background: var(--black); border-top: 1px solid rgba(232, 221, 208, 0.06); padding: 3rem 1.25rem 2rem; text-align: center; }
-    .footer-logo { font-family: var(--font-display); font-size: 1.3rem; color: var(--cream); letter-spacing: 0.08em; margin-bottom: 0.3rem; }
-    .footer-logo span { color: var(--rust); }
-    .footer-sub { font-size: 0.8rem; color: var(--umber); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem; }
+    /* FOOTER */
+    .site-footer { background: var(--navy); color: rgba(255,255,255,0.6); padding: 3rem 1.5rem 2rem; text-align: center; }
+    .footer-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 0.3rem; }
+    .footer-logo span { color: var(--teal-light); }
+    .footer-sub { font-size: 0.78rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1.5rem; }
     .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-    .footer-links a { font-size: 0.82rem; color: var(--cream-dim); text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--rust); }
-    .footer-copy { font-size: 0.72rem; color: var(--umber); opacity: 0.6; }
+    .footer-links a { font-size: 0.85rem; color: rgba(255,255,255,0.6); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--teal-light); }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
 
     @media (min-width: 768px) {
       .site-nav { padding: 1rem 2rem; }
-      .logo { font-size: 1.7rem; }
+      .logo { font-size: 1.4rem; }
       .nav-links { display: flex; }
       .nav-cta { display: flex; gap: 0.75rem; align-items: center; }
       .menu-toggle { display: none; }
-      .service-block-body { grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+      .service-block-inner { grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+      .service-block-img { height: 280px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav class="site-nav">
     <a href="/" class="logo">Coastal <span>Limestone</span></a>
     <ul class="nav-links">
@@ -293,29 +146,22 @@
   </div>
 
   <main>
-    <!-- PAGE HEADER -->
-    <section class="page-header noise-overlay">
-      <div class="page-header-bg" aria-hidden="true"></div>
+    <section class="page-header">
       <h1>Our Services</h1>
       <p>Quality earthworks and limestone solutions for Peel homeowners and builders</p>
     </section>
 
-    <!-- SERVICES -->
     <section class="services-list">
 
-      <!-- RETAINING WALLS -->
       <div class="service-block reveal" id="retaining">
-        <img src="https://images.unsplash.com/photo-1718653159744-f1b9b6221a6a?auto=format&fit=crop&w=1200&q=80" alt="Limestone retaining wall construction" class="service-block-img" loading="lazy">
-        <div class="service-block-header">
-          <span class="service-block-icon">🧱</span>
-          <h2>Limestone Retaining Walls</h2>
-        </div>
-        <div class="service-block-body">
+        <div class="service-block-inner">
           <div>
-            <p>Natural limestone is the material of choice for WA retaining walls — hardwearing, locally sourced, and it looks better with age. Whether you need a small garden wall or a major structural retaining wall for a sloping block, we build them to last.</p>
-            <p style="margin-top:1rem;">Every wall is built to engineering standards: proper excavation, geotech fabric, drainage behind the stone, and compaction that holds. We handle the complete job from start to finish.</p>
+            <img src="https://images.unsplash.com/photo-1718653159744-f1b9b6221a6a?auto=format&fit=crop&w=800&q=80" alt="Limestone retaining wall" class="service-block-img" loading="lazy">
           </div>
           <div>
+            <h2>🧱 Limestone Retaining Walls</h2>
+            <p>Natural limestone is the material of choice for WA retaining walls — hardwearing, locally sourced, and it looks better with age. Whether you need a small garden wall or a major structural retaining wall for a sloping block, we build them to last.</p>
+            <p>Every wall is built to engineering standards: proper excavation, geotech fabric, drainage behind the stone, and compaction that holds.</p>
             <ul class="service-checklist">
               <li>Garden retaining walls — any height</li>
               <li>Structural walls for sloping blocks</li>
@@ -324,24 +170,20 @@
               <li>Drainage behind all walls included</li>
               <li>Council compliance where required</li>
             </ul>
-            <a href="/contact" class="btn" style="margin-top:1.25rem;">Request a Quote</a>
+            <a href="/contact" class="btn">Request a Quote</a>
           </div>
         </div>
       </div>
 
-      <!-- EARTHWORKS -->
-      <div class="service-block alt reveal" id="earthworks">
-        <img src="https://images.unsplash.com/photo-1690719495572-bc42843eae29?auto=format&fit=crop&w=1200&q=80" alt="Mini excavator doing earthworks in Australia" class="service-block-img" loading="lazy">
-        <div class="service-block-header">
-          <span class="service-block-icon">🚧</span>
-          <h2>Bulk Earthworks</h2>
-        </div>
-        <div class="service-block-body">
+      <div class="service-block reveal" id="earthworks">
+        <div class="service-block-inner">
           <div>
-            <p>Site preparation is the most important step in any build. Get it wrong and you'll be fixing problems for years. We have the gear and experience to cut, fill, grade and level your site correctly from the start.</p>
-            <p style="margin-top:1rem;">From single residential blocks to multi-lot subdivisions, we deliver accurate cuts and fills with proper compaction — ready for the next trade. No corners cut, no excuses.</p>
+            <img src="https://images.unsplash.com/photo-1690719495572-bc42843eae29?auto=format&fit=crop&w=800&q=80" alt="Mini excavator doing earthworks" class="service-block-img" loading="lazy">
           </div>
           <div>
+            <h2>🚧 Bulk Earthworks</h2>
+            <p>Site preparation is the most important step in any build. Get it wrong and you'll be fixing problems for years. We have the gear and experience to cut, fill, grade and level your site correctly from the start.</p>
+            <p>From single residential blocks to multi-lot subdivisions, we deliver accurate cuts and fills with proper compaction.</p>
             <ul class="service-checklist">
               <li>Site cuts and bulk filling</li>
               <li>Block levelling and grading</li>
@@ -350,24 +192,20 @@
               <li>Dam construction and repair</li>
               <li>Road and access track building</li>
             </ul>
-            <a href="/contact" class="btn" style="margin-top:1.25rem;">Request a Quote</a>
+            <a href="/contact" class="btn">Request a Quote</a>
           </div>
         </div>
       </div>
 
-      <!-- BOBCAT -->
       <div class="service-block reveal" id="bobcat">
-        <img src="https://images.unsplash.com/photo-1751054619908-65d27a503ce8?auto=format&fit=crop&w=1200&q=80" alt="Bobcat clearing construction site" class="service-block-img" loading="lazy">
-        <div class="service-block-header">
-          <span class="service-block-icon">🚜</span>
-          <h2>Bobcat & Site Clearing</h2>
-        </div>
-        <div class="service-block-body">
+        <div class="service-block-inner">
           <div>
-            <p>Fast, efficient bobcat work for all types of site clearing and material handling. From initial block clearing to final spread and cleanup — no job too small, no access too tight.</p>
-            <p style="margin-top:1rem;">Whether you're building a new home, laying a driveway, or doing a landscaping makeover, we'll get your site clear, level and ready to build on.</p>
+            <img src="https://images.unsplash.com/photo-1751054619908-65d27a503ce8?auto=format&fit=crop&w=800&q=80" alt="Bobcat clearing site" class="service-block-img" loading="lazy">
           </div>
           <div>
+            <h2>🚜 Bobcat & Site Clearing</h2>
+            <p>Fast, efficient bobcat work for all types of site clearing and material handling. From initial block clearing to final spread and cleanup — no job too small, no access too tight.</p>
+            <p>Whether you're building a new home, laying a driveway, or doing a landscaping makeover, we'll get your site clear and ready.</p>
             <ul class="service-checklist">
               <li>Site clearing and vegetation removal</li>
               <li>Rubble and green waste removal</li>
@@ -376,24 +214,20 @@
               <li>Driveway and path preparation</li>
               <li>Post-hole digging and rammer hire</li>
             </ul>
-            <a href="/contact" class="btn" style="margin-top:1.25rem;">Request a Quote</a>
+            <a href="/contact" class="btn">Request a Quote</a>
           </div>
         </div>
       </div>
 
-      <!-- DRAINAGE -->
-      <div class="service-block alt reveal" id="drainage">
-        <img src="https://images.unsplash.com/photo-1748848436533-f7583dce22b6?auto=format&fit=crop&w=1200&q=80" alt="Drainage and site preparation work" class="service-block-img" loading="lazy">
-        <div class="service-block-header">
-          <span class="service-block-icon">💧</span>
-          <h2>Drainage & Site Prep</h2>
-        </div>
-        <div class="service-block-body">
+      <div class="service-block reveal" id="drainage">
+        <div class="service-block-inner">
           <div>
-            <p>Poor drainage destroys foundations, driveways and landscapes. We design and install practical drainage solutions that actually work in the Peel region's sandy soil conditions — from simple spoon drains to complex subsoil systems.</p>
-            <p style="margin-top:1rem;">Correct site prep also means understanding your soil type, fall angles and where water needs to go. We factor all of that in before we start.</p>
+            <img src="https://images.unsplash.com/photo-1748848436533-f7583dce22b6?auto=format&fit=crop&w=800&q=80" alt="Drainage work" class="service-block-img" loading="lazy">
           </div>
           <div>
+            <h2>💧 Drainage & Site Prep</h2>
+            <p>Poor drainage destroys foundations, driveways and landscapes. We design and install practical drainage solutions that actually work in the Peel region's sandy soil conditions.</p>
+            <p>Correct site prep also means understanding your soil type, fall angles and where water needs to go. We factor all of that in.</p>
             <ul class="service-checklist">
               <li>Spoon drains and french drains</li>
               <li>Subsoil drainage systems</li>
@@ -402,17 +236,16 @@
               <li>Benching and fall correction</li>
               <li>Drainage plans for council submissions</li>
             </ul>
-            <a href="/contact" class="btn" style="margin-top:1.25rem;">Request a Quote</a>
+            <a href="/contact" class="btn">Request a Quote</a>
           </div>
         </div>
       </div>
 
     </section>
 
-    <!-- CTA -->
-    <section class="cta-section noise-overlay">
+    <section class="cta-section">
       <div class="container">
-        <h2 class="reveal">Got a Job <span style="color:var(--rust)">in Mind</span>?</h2>
+        <h2 class="reveal">Got a Job in Mind?</h2>
         <p class="reveal reveal-delay-1">Tell us what you need — we'll come out, assess the site and give you an honest quote. Usually same day.</p>
         <a href="/contact" class="btn reveal reveal-delay-2">Get a Free Quote</a>
       </div>
